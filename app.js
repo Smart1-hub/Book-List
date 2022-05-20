@@ -9,7 +9,7 @@ class Book {
 // UI Class: Handle UI Tasks
 class UI {
   static displayBooks() {
-    const books = Stored.getBooks();
+    const books = Store.getBooks();
     books.forEach((book) => UI.addBookToList(book));
   }
 
@@ -51,7 +51,7 @@ class UI {
 
 // Store Class: Handles Storage
 class Store {
-  static getBook() {
+  static getBooks() {
     let books;
     if(localStorage.getItem('books') === null) {
       books = [];
@@ -102,6 +102,9 @@ if(title === '' || author === '' || isbn === '') {
     // Add Book to UI
     UI.addBookToList(book);
 
+    // Add book to store
+    Store.addBook(book);
+
     // Show success message
     UI.showAlert('Book Added', 'success');
 
@@ -112,7 +115,11 @@ if(title === '' || author === '' || isbn === '') {
 
 // Event: Remove a Book
 document.querySelector('#book-list').addEventListener('click', (e) => {
+  // Remove book from UI
   UI.deleteBook(e.target)
+
+  // Remove book from store
+  Store.removeBook(e.target.parentElement.previousElementSibling.textContent);
 
    // Show success message
    UI.showAlert('Book Removed', 'success');
