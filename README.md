@@ -14,7 +14,7 @@ This is a book list project that allows users to add and remove book from a list
 
 ## Live Demo
 
-[Live Demo]()
+[Live Demo](https://smart1-hub.github.io/Book-List/)
 
 ## Getting Started
 
